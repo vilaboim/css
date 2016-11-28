@@ -1,63 +1,62 @@
-# Airbnb CSS / Sass Styleguide
+# Vitta CSS / Stylus Styleguide
 
-*A mostly reasonable approach to CSS and Sass*
+*Esse styleguide é baseado no [Airbnb CSS Styleguide](https://github.com/airbnb/css)*
 
-## Table of Contents
+## Conteúdo
 
-  1. [Terminology](#terminology)
-    - [Rule Declaration](#rule-declaration)
-    - [Selectors](#selectors)
-    - [Properties](#properties)
+  1. [Terminologia](#terminology)
+    - [Declaração](#rule-declaration)
+    - [Seletores](#selectors)
+    - [Propriedades](#properties)
   1. [CSS](#css)
-    - [Formatting](#formatting)
-    - [Comments](#comments)
-    - [OOCSS and BEM](#oocss-and-bem)
-    - [ID Selectors](#id-selectors)
-    - [JavaScript hooks](#javascript-hooks)
-    - [Border](#border)
-  1. [Sass](#sass)
-    - [Syntax](#syntax)
-    - [Ordering](#ordering-of-property-declarations)
-    - [Variables](#variables)
+    - [Formatação](#formatting)
+    - [Comentários](#comments)
+    - [OOCSS e BEM](#oocss-e-bem)
+    - [Seletores ID](#id-selectors)
+    - [Funções JavaScript](#funcoes-javascript)
+    - [Borda](#border)
+  1. [Stylus](#stylus)
+    - [Sintaxe](#syntax)
+    - [Ordenação](#ordering-of-property-declarations)
+    - [Variáveis](#variables)
     - [Mixins](#mixins)
-    - [Extend directive](#extend-directive)
-    - [Nested selectors](#nested-selectors)
-  1. [Translation](#translation)
+    - [Extend](#extend-directive)
+    - [Seletores aninhados](#nested-selectors)
 
-## Terminology
+## Terminologia
 
-### Rule declaration
+### Declaração
 
-A “rule declaration” is the name given to a selector (or a group of selectors) with an accompanying group of properties. Here's an example:
+Uma “declaração” é o nome dado a um seletor (ou grupo de seletores) acompanhado de um grupo de propriedades. Um exemplo:
 
 ```css
-.listing {
-  font-size: 18px;
-  line-height: 1.2;
+.body {
+  color: #CCC;
+  font: 300 10px/1.5 Open Sans, Arial, sans-serif;
 }
 ```
 
-### Selectors
+### Seletores
 
-In a rule declaration, “selectors” are the bits that determine which elements in the DOM tree will be styled by the defined properties. Selectors can match HTML elements, as well as an element's class, ID, or any of its attributes. Here are some examples of selectors:
+Em uma declaração,  “seletores” são os termos que determinam quais elementos no DOM serão estilizados pelas propriedades definidas. Seletores podem corresponder a elementos HTML, bem como a classe, ID ou qualquer atributo de um elemento. Alguns exemplos de seletores:
 
 ```css
-.my-element-class {
+.MyElementClass {
   /* ... */
 }
 
-[aria-hidden] {
+input[type="textarea"] {
   /* ... */
 }
 ```
 
-### Properties
+### Propriedades
 
-Finally, properties are what give the selected elements of a rule declaration their style. Properties are key-value pairs, and a rule declaration can contain one or more property declarations. Property declarations look like this:
+Propriedades dão estilo ao elemento selecionado em uma declaração. Propriedades são pares chave-valor, e uma declaração pode conter uma ou mais propriedades. Propriedades são parecidas com isso:
 
 ```css
-/* some selector */ {
-  background: #f1f1f1;
+/* seletor */ {
+  background: #F1F1F1;
   color: #333;
 }
 ```
@@ -66,237 +65,170 @@ Finally, properties are what give the selected elements of a rule declaration th
 
 ### Formatting
 
-* Use soft tabs (2 spaces) for indentation
-* Prefer dashes over camelCasing in class names.
-  - Underscores and PascalCasing are okay if you are using BEM (see [OOCSS and BEM](#oocss-and-bem) below).
-* Do not use ID selectors
-* When using multiple selectors in a rule declaration, give each selector its own line.
-* Put a space before the opening brace `{` in rule declarations
-* In properties, put a space after, but not before, the `:` character.
-* Put closing braces `}` of rule declarations on a new line
-* Put blank lines between rule declarations
+* Use tabs (4 espaços) para identação.
+* Use Underscores e PascalCasing nos nomes de classes (veja [OOCSS e BEM](#oocss-e-bem) abaixo).
+* Não use seletores ID.
+* Deixe apenas um seletor por linha em uma declaração com múltiplos seletores.
+* Coloque um espaço antes da chave de abertura em uma declaração.
+* Em uma propriedade, coloque um espaço depois de `:`.
+* Deixe as propriedades em ordem alfabética.
+* Coloque a chave de fechamento em uma nova linha.
+* Salte uma linha entre declarações.
 
-**Bad**
+**Ruim**
 
 ```css
-.avatar{
-    border-radius:50%;
-    border:2px solid white; }
-.no, .nope, .not_good {
+.use-espacos-e-salte-linhas{
+    margin-right:15px;
+    font-size:17px;}
+.salte-linhas, .entre, .seletores, .e-declaracoes {
     // ...
 }
-#lol-no {
+#nao-use-id {
   // ...
 }
 ```
 
-**Good**
+**Bom**
 
 ```css
-.avatar {
+.Tabs__Icon {
   border-radius: 50%;
   border: 2px solid white;
 }
 
-.one,
-.selector,
-.per-line {
+.um,
+.seletor,
+.por-linha {
   // ...
 }
 ```
 
-### Comments
+### Comentários
 
-* Prefer line comments (`//` in Sass-land) to block comments.
-* Prefer comments on their own line. Avoid end-of-line comments.
-* Write detailed comments for code that isn't self-documenting:
-  - Uses of z-index
-  - Compatibility or browser-specific hacks
+* Prefira comentários de linha (`//` em Stylus).
+* Use comentários na mesma linha da propriedade.
+* Escreva comentários para propriedades que não sejam autodocumentadas:
+  - z-index
+  - Compatibilidade ou browser hacks
 
-### OOCSS and BEM
+### OOCSS e BEM
 
-We encourage some combination of OOCSS and BEM for these reasons:
+Nós acreditamos em uma combinação de OOCSS e BEM, por estas razões:
 
-  * It helps create clear, strict relationships between CSS and HTML
-  * It helps us create reusable, composable components
-  * It allows for less nesting and lower specificity
-  * It helps in building scalable stylesheets
+  * Deixa HTML e CSS limpos.
+  * Ajuda a criar componentes reutilizáveis.
+  * Permite menos seletores aninhados e especificidade baixa
+  * Ajuda na criação de folhas de estilo escaláveis
 
-**OOCSS**, or “Object Oriented CSS”, is an approach for writing CSS that encourages you to think about your stylesheets as a collection of “objects”: reusable, repeatable snippets that can be used independently throughout a website.
+**OOCSS**, ou “CSS Orientado a Objetos”, é uma abordagem que ajuda a criar folhas de estilo como uma coleção de “objetos”: componentes reutilizáveis que podem ser usados de forma independente na aplicação.
 
-  * Nicole Sullivan's [OOCSS wiki](https://github.com/stubbornella/oocss/wiki)
-  * Smashing Magazine's [Introduction to OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/)
+  * [OOCSS wiki](https://github.com/stubbornella/oocss/wiki) por Nicole Sullivan
+  * [Introduction to OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/) por Smashing Magazine
 
-**BEM**, or “Block-Element-Modifier”, is a _naming convention_ for classes in HTML and CSS. It was originally developed by Yandex with large codebases and scalability in mind, and can serve as a solid set of guidelines for implementing OOCSS.
+**BEM**, ou “Block-Element-Modifier”, é uma convenção de nomes para classes em HTML e CSS. Foi criado pensando em escabilidade e serve como um guia para implementar OOCSS.
 
-  * CSS Trick's [BEM 101](https://css-tricks.com/bem-101/)
-  * Harry Roberts' [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
+  * [BEM 101](https://css-tricks.com/bem-101/) por CSS Tricks
+  * [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) por Harry Roberts
 
-We recommend a variant of BEM with PascalCased “blocks”, which works particularly well when combined with components (e.g. React). Underscores and dashes are still used for modifiers and children.
-
-**Example**
-
-```jsx
-// ListingCard.jsx
-function ListingCard() {
-  return (
-    <article class="ListingCard ListingCard--featured">
-
-      <h1 class="ListingCard__title">Adorable 2BR in the sunny Mission</h1>
-
-      <div class="ListingCard__content">
-        <p>Vestibulum id ligula porta felis euismod semper.</p>
-      </div>
-
-    </article>
-  );
-}
-```
+Recomendamos o uso de uma variação do BEM, usando UpperCamelCase.
 
 ```css
-/* ListingCard.css */
-.ListingCard { }
-.ListingCard--featured { }
-.ListingCard__title { }
-.ListingCard__content { }
+/* ConfigList.css */
+.ConfigList { }
+.ConfigList__Row { }
+.ConfigList__Row--header { }
 ```
 
-  * `.ListingCard` is the “block” and represents the higher-level component
-  * `.ListingCard__title` is an “element” and represents a descendant of `.ListingCard` that helps compose the block as a whole.
-  * `.ListingCard--featured` is a “modifier” and represents a different state or variation on the `.ListingCard` block.
+  * `.ConfigList` é o “bloco” e representa o componente de mais alto nível.
+  * `.ConfigList__Row` é um “elemento” e representa uma parte de `.ConfigList` que ajuda a compor o bloco.
+  * `.ConfigList__Row--header` é um “modificador” e representa uma variação ou estado diferente do elemento `.ConfigList__Row`.
 
-### ID selectors
+### Seletores ID
 
-While it is possible to select elements by ID in CSS, it should generally be considered an anti-pattern. ID selectors introduce an unnecessarily high level of [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) to your rule declarations, and they are not reusable.
+tl;dr
+Não use.
 
-For more on this subject, read [CSS Wizardry's article](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) on dealing with specificity.
+Seletores ID causam um nível de [especificidade](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) desnecessário nas suas declarações, e não são reutilizáveis.
 
-### JavaScript hooks
+### Eventos JavaScript
 
-Avoid binding to the same class in both your CSS and JavaScript. Conflating the two often leads to, at a minimum, time wasted during refactoring when a developer must cross-reference each class they are changing, and at its worst, developers being afraid to make changes for fear of breaking functionality.
-
-We recommend creating JavaScript-specific classes to bind to, prefixed with `.js-`:
+Não use classes como trigger para eventos JavaScript, use atributos [data-*](http://blog.realstuffforabstractpeople.com/post/31753521367/classnames-for-styling-data-attributes-for) no lugar. Classes CSS devem servir apenas para estilização, você pode desencorajar outros desenvolvedores a fazer mudanças colocando-as com outras funções.
 
 ```html
-<button class="btn btn-primary js-request-to-book">Request to Book</button>
+<button class="Btn--primary" data-role="save-patient">Salvar</button>
 ```
 
-### Border
+### Zero
 
-Use `0` instead of `none` to specify that a style has no border.
+`0` é `0` independente de unidade, então omita-a.
 
-**Bad**
+**Ruim**
 
 ```css
-.foo {
-  border: none;
+.Schedule {
+  margin: 0px auto;
 }
 ```
 
-**Good**
+**Bom**
 
 ```css
-.foo {
-  border: 0;
+.Schedule {
+  margin: 0 auto;
 }
 ```
 
-## Sass
+## Stylus
 
-### Syntax
+### Syntaxe
 
-* Use the `.scss` syntax, never the original `.sass` syntax
-* Order your regular CSS and `@include` declarations logically (see below)
+* Use () entre os parâmetros de Mixins e Funções
 
-### Ordering of property declarations
+### Ordenação de propriedades
 
-1. Property declarations
+Ordene as propriedades em ordem alfabética
 
-    List all standard property declarations, anything that isn't an `@include` or a nested selector.
+### Variáveis
 
-    ```scss
-    .btn-green {
-      background: green;
-      font-weight: bold;
-      // ...
-    }
-    ```
+Use $ na declaração de variáveis ($bg-color = #FFF). Prefira nomes de variáveis em dash-cased (ex.: `$primary-color`) em vez de camelCased ou snake_cased.
+Coloque um underscore como prefixo de variáveis que serão usadas apenas em um arquivo (ex. : `$_primary-color`).
 
-2. `@include` declarations
+### @extend
 
-    Grouping `@include`s at the end makes it easier to read the entire selector.
+Se precisar usar `@extend`, coloque-o antes de qualquer propriedade.
 
-    ```scss
-    .btn-green {
-      background: green;
-      font-weight: bold;
-      @include transition(background 0.5s ease);
-      // ...
-    }
-    ```
+### Seletores aninhados
 
-3. Nested selectors
+Seletores aninhados, **se necessários**, vão por último. Adicione uma linha em branco entre suas declarações e seletores aninhados.
+Aplique as mesmas regras acima também entre seletores aninhados.
 
-    Nested selectors, _if necessary_, go last, and nothing goes after them. Add whitespace between your rule declarations and nested selectors, as well as between adjacent nested selectors. Apply the same guidelines as above to your nested selectors.
+```stylus
+.btn
+  background green
+  font-weight bold
+  transition(background 0.5s ease)
 
-    ```scss
-    .btn {
-      background: green;
-      font-weight: bold;
-      @include transition(background 0.5s ease);
-
-      .icon {
-        margin-right: 10px;
-      }
-    }
-    ```
-
-### Variables
-
-Prefer dash-cased variable names (e.g. `$my-variable`) over camelCased or snake_cased variable names. It is acceptable to prefix variable names that are intended to be used only within the same file with an underscore (e.g. `$_my-variable`).
-
-### Mixins
-
-Mixins should be used to DRY up your code, add clarity, or abstract complexity--in much the same way as well-named functions. Mixins that accept no arguments can be useful for this, but note that if you are not compressing your payload (e.g. gzip), this may contribute to unnecessary code duplication in the resulting styles.
-
-### Extend directive
-
-`@extend` should be avoided because it has unintuitive and potentially dangerous behavior, especially when used with nested selectors. Even extending top-level placeholder selectors can cause problems if the order of selectors ends up changing later (e.g. if they are in other files and the order the files are loaded shifts). Gzipping should handle most of the savings you would have gained by using `@extend`, and you can DRY up your stylesheets nicely with mixins.
-
-### Nested selectors
-
-**Do not nest selectors more than three levels deep!**
-
-```scss
-.page-container {
-  .content {
-    .profile {
-      // STOP!
-    }
+  .icon
+    margin-right 10px
   }
 }
 ```
 
-When selectors become this long, you're likely writing CSS that is:
+**Não aninhe seletores em mais de três níveis**
 
-* Strongly coupled to the HTML (fragile) *—OR—*
-* Overly specific (powerful) *—OR—*
-* Not reusable
+```stylus
+.page-container
+  .content
+    .profile
+      // PARE!
+```
 
+Quando existem muitos níveis de aninhamento, você provavelmente está cometendo um (ou mais) desses erros no seu CSS:
+* Muito preso ao HTML
+* Excessivamente específico
+* Não reutilizável
 
-Again: **never nest ID selectors!**
+**Nunca aninhe seletores ID**
 
-If you must use an ID selector in the first place (and you should really try not to), they should never be nested. If you find yourself doing this, you need to revisit your markup, or figure out why such strong specificity is needed. If you are writing well formed HTML and CSS, you should **never** need to do this.
-
-## Translation
-
-  This style guide is also available in other languages:
-
-  - ![tw](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Taiwan.png) **Chinese (Traditional)**: [ArvinH/css-style-guide](https://github.com/ArvinH/css-style-guide)
-  - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [Zhangjd/css-style-guide](https://github.com/Zhangjd/css-style-guide)
-  - ![ja](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Japan.png) **Japanese**: [nao215/css-style-guide](https://github.com/nao215/css-style-guide)
-  - ![ko](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/South-Korea.png) **Korean**: [CodeMakeBros/css-style-guide](https://github.com/CodeMakeBros/css-style-guide)
-  - ![PT-BR](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Brazil.png) **Portuguese**: [felipevolpatto/css-style-guide](https://github.com/felipevolpatto/css-style-guide)  
-  - ![ru](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Russia.png) **Russian**: [Nekorsis/css-style-guide](https://github.com/Nekorsis/css-style-guide)
-  - ![es](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Spain.png) **Spanish**: [ismamz/guia-de-estilo-css](https://github.com/ismamz/guia-de-estilo-css)
-  - ![vn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Vietnam.png) **Vietnamese**: [trungk18/css-style-guide](https://github.com/trungk18/css-style-guide)
+Se você precisar usar um seletor ID, eles nunca podem ser aninhados. Se isso acontecer você deve reavaliar sua marcação HTML ou avaliar a necessidade de tanta especificidade.
