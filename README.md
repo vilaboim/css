@@ -161,7 +161,7 @@ Não use classes como trigger para eventos JavaScript, use atributos [data-*](ht
 
 ### Zero
 
-`0` é `0` independente de unidade, então omita-a.
+`0` é `0` independente de unidade, então omita-o. A unidade só é necessária quando usamos a propriedade rotate (ex.: transform: rotate(0deg))
 
 **Ruim**
 
