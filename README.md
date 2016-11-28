@@ -13,11 +13,11 @@
     - [Comentários](#comentários)
     - [OOCSS e BEM](#oocss-e-bem)
     - [Seletores ID](#seletores-id)
-    - [Funções JavaScript](#funcoes-javascript)
-    - [Borda](#borda)
+    - [Eventos JavaScript](#eventos-javascript)
+    - [Zero](#zero)
   1. [Stylus](#stylus)
-    - [Sintaxe](#syntaxe)
-    - [Ordenação](#ordenação)
+    - [Sintaxe](#sintaxe)
+    - [Ordenação de propriedades](#ordenação-de-propriedades)
     - [Variáveis](#variáveis)
     - [Mixins](#mixins)
     - [Extend](#extend)
@@ -181,7 +181,7 @@ Não use classes como trigger para eventos JavaScript, use atributos [data-*](ht
 
 ## Stylus
 
-### Syntaxe
+### Sintaxe
 
 * Use () entre os parâmetros de Mixins e Funções
 
