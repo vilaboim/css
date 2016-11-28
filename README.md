@@ -4,24 +4,24 @@
 
 ## Conteúdo
 
-  1. [Terminologia](#terminology)
-    - [Declaração](#rule-declaration)
-    - [Seletores](#selectors)
-    - [Propriedades](#properties)
+  1. [Terminologia](#terminologia)
+    - [Declaração](#declaração)
+    - [Seletores](#seletores)
+    - [Propriedades](#propriedades)
   1. [CSS](#css)
-    - [Formatação](#formatting)
-    - [Comentários](#comments)
+    - [Formatação](#formatação)
+    - [Comentários](#comentários)
     - [OOCSS e BEM](#oocss-e-bem)
-    - [Seletores ID](#id-selectors)
+    - [Seletores ID](#seletores-id)
     - [Funções JavaScript](#funcoes-javascript)
-    - [Borda](#border)
+    - [Borda](#borda)
   1. [Stylus](#stylus)
-    - [Sintaxe](#syntax)
-    - [Ordenação](#ordering-of-property-declarations)
-    - [Variáveis](#variables)
+    - [Sintaxe](#syntaxe)
+    - [Ordenação](#ordenação)
+    - [Variáveis](#variáveis)
     - [Mixins](#mixins)
-    - [Extend](#extend-directive)
-    - [Seletores aninhados](#nested-selectors)
+    - [Extend](#extend)
+    - [Seletores aninhados](#seletores-aninhados)
 
 ## Terminologia
 
@@ -63,7 +63,7 @@ Propriedades dão estilo ao elemento selecionado em uma declaração. Propriedad
 
 ## CSS
 
-### Formatting
+### Formatação
 
 * Use tabs (4 espaços) para identação.
 * Use Underscores e PascalCasing nos nomes de classes (veja [OOCSS e BEM](#oocss-e-bem) abaixo).
@@ -129,7 +129,7 @@ Nós acreditamos em uma combinação de OOCSS e BEM, por estas razões:
 **BEM**, ou “Block-Element-Modifier”, é uma convenção de nomes para classes em HTML e CSS. Foi criado pensando em escabilidade e serve como um guia para implementar OOCSS.
 
   * [BEM 101](https://css-tricks.com/bem-101/) por CSS Tricks
-  * [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) por Harry Roberts
+  * [Introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) por Harry Roberts
 
 Recomendamos o uso de uma variação do BEM, usando UpperCamelCase.
 
