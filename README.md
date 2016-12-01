@@ -211,8 +211,6 @@ Aplique as mesmas regras acima também entre seletores aninhados.
 
   .icon
     margin-right 10px
-  }
-}
 ```
 
 **Não aninhe seletores em mais de três níveis**
