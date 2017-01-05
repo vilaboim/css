@@ -1,4 +1,4 @@
-# Vitta CSS / Stylus Styleguide
+# Villain CSS / Stylus Styleguide
 
 *Esse styleguide é baseado no [Airbnb CSS Styleguide](https://github.com/airbnb/css)*
 
