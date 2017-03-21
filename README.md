@@ -1,6 +1,6 @@
-# Villain CSS / Stylus Styleguide
+# CSS / Stylus Codeguide
 
-*Esse styleguide é baseado no [Airbnb CSS Styleguide](https://github.com/airbnb/css)*
+*Este Codeguide é baseado no [Airbnb CSS Styleguide](https://github.com/airbnb/css)*
 
 ## Conteúdo
 
@@ -38,7 +38,7 @@ Uma “declaração” é o nome dado a um seletor (ou grupo de seletores) acomp
 
 ### Seletores
 
-Em uma declaração,  “seletores” são os termos que determinam quais elementos no DOM serão estilizados pelas propriedades definidas. Seletores podem corresponder a elementos HTML, bem como a classe, ID ou qualquer atributo de um elemento. Alguns exemplos de seletores:
+Em uma declaração, “seletores” são os termos que determinam quais elementos no DOM serão estilizados pelas propriedades definidas. Seletores podem corresponder a elementos HTML, bem como a classe, ID ou qualquer atributo de um elemento. Alguns exemplos de seletores:
 
 ```css
 .MyElementClass {
