@@ -1,4 +1,4 @@
-# CSS / Stylus Codeguide
+# Vitta CSS/Stylus Codeguide
 
 *Este Codeguide é baseado no [Airbnb CSS Styleguide](https://github.com/airbnb/css)*
 
