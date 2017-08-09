@@ -65,8 +65,8 @@ Propriedades dão estilo ao elemento selecionado em uma declaração. Propriedad
 
 ### Formatação
 
-* Use tabs (4 espaços) para identação.
-* Use Underscores e PascalCasing nos nomes de classes (veja [OOCSS e BEM](#oocss-e-bem) abaixo).
+* Use soft tabs (2 espaços) para indentação.
+* Use Underscore e PascalCasing nos nomes de classes (veja [OOCSS e BEM](#oocss-e-bem) abaixo).
 * Não use seletores ID.
 * Deixe apenas um seletor por linha em uma declaração com múltiplos seletores.
 * Coloque um espaço antes da chave de abertura em uma declaração.
